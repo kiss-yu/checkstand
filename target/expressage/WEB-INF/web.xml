@@ -1,0 +1,114 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>expressage</display-name>
+
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:spring-hibernate.xml</param-value>
+  </context-param>
+  <!-- 编码过滤器 -->
+  <filter>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <async-supported>true</async-supported>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <!-- <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param> -->
+  </filter>
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>openSessionInviewFilter</filter-name>
+    <filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>openSessionInviewFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>HttpMethodFilter</filter-name>
+    <filter-class>org.springframework.web.filter.HttpPutFormContentFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>HttpMethodFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+
+  <!-- 配置UrlRewriteFilter -->
+  <!-- <com.expressagessage.web.filter>
+    <com.expressagessage.web.filter-name>UrlRewriteFilter</com.expressagessage.web.filter-name>
+    <com.expressagessage.web.filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</com.expressagessage.web.filter-class>
+    <init-param>
+      <param-name>confPath</param-name>
+      <param-value>/WEB-INF/classes/urlrewrite.xml</param-value>
+    </init-param>
+    <init-param>
+      <param-name>logLevel</param-name>
+      <param-value>ERROR</param-value>
+    </init-param>
+  </com.expressagessage.web.filter>
+  <com.expressagessage.web.filter-mapping>
+    <com.expressagessage.web.filter-name>UrlRewriteFilter</com.expressagessage.web.filter-name>
+    <url-pattern>/*</url-pattern>
+  </com.expressagessage.web.filter-mapping> -->
+
+
+  <!-- Spring监听器 -->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <!-- 防止Spring内存溢出监听器 -->
+  <listener>
+    <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+  </listener>
+  <!-- Spring RequestContext监听器 -->
+  <listener>
+    <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+  </listener>
+
+
+  <!-- Web Listener -->
+  <!--<com.expressagessage.web.listener>-->
+  <!--<com.expressagessage.web.listener-class>com.expressagessage.web.com.expressagessage.web.listener.WebListener</com.expressagessage.web.listener-class>-->
+  <!--</com.expressagessage.web.listener>-->
+
+  <!-- Spring MVC servlet -->
+  <!--<filter>-->
+    <!--<filter-name>Menu</filter-name>-->
+    <!--<filter-class>com.checkstand.web.filter.PermissionFilter</filter-class>-->
+  <!--</filter>-->
+  <!--<filter-mapping>-->
+    <!--<filter-name>Menu</filter-name>-->
+    <!--<url-pattern>/*</url-pattern>-->
+  <!--</filter-mapping>-->
+  <servlet>
+    <servlet-name>SpringMVC</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:spring-mvc.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+    <async-supported>true</async-supported>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SpringMVC</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+</web-app>

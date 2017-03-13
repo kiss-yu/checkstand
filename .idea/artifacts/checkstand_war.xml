@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="checkstand:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="expressage.war">
+      <element id="artifact" artifact-name="checkstand:war exploded" />
+    </root>
+  </artifact>
+</component>

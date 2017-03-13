@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd  
+                        http://www.springframework.org/schema/context  
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- 引入配置文件 -->
+	<bean id="propertyConfigurer"
+		  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:jdbc.properties" />
+	</bean>
+
+	<!-- 自动扫描 -->
+	<aop:aspectj-autoproxy/>
+	<context:component-scan base-package="com.checkstand" >
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+      <property name="driverClass" value="${jdbc.driverClassName}" />
+      <property name="jdbcUrl" value="${jdbc.url}" />
+      <property name="user" value="${jdbc.username}" />
+      <property name="password" value="${jdbc.password}" />
+      <property name="minPoolSize" value="${jdbc.minIdle}" />
+      <property name="maxPoolSize" value="${jdbc.maxIdle}" />
+      <property name="initialPoolSize" value="${jdbc.initialSize}" />
+      <property name="maxIdleTime" value="${jdbc.maxWait}" />
+      <property name="maxStatements" value="100"></property>
+      <property name="idleConnectionTestPeriod" value="3600"></property>
+      <property name="acquireIncrement" value="1"></property>
+    </bean>
+
+
+	<!-- spring和Hibernate完美整合，不需要Hibernate的配置映射文件 -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="packagesToScan">
+			<list>
+				<value>com.checkstand.model</value>
+			</list>
+		</property>
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">com.checkstand.util.MySQL5InnoDBDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<prop key="cache.use_query_cache">false</prop>
+				<prop key="current_session_context_class">thread</prop>
+				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext</prop>
+			</props>
+
+		</property>
+
+	</bean>
+
+	<!--<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">-->
+		<!--<property name="sessionFactory" ref="sessionFactory"/>-->
+	<!--</bean>-->
+
+	<!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+		<!--<tx:attributes>-->
+			<!--<tx:method name="get*" read-only="true" propagation="REQUIRED"/>-->
+			<!--<tx:method name="*" read-only="false" propagation="REQUIRED"/>-->
+		<!--</tx:attributes>-->
+	<!--</tx:advice>-->
+
+
+	<!--<aop:config proxy-target-class="true">-->
+		<!--<aop:advisor pointcut="execution(public * com.expressagessage.service.*Service.*(..))" advice-ref="txAdvice"/>-->
+	<!--</aop:config>-->
+
+
+</beans>
