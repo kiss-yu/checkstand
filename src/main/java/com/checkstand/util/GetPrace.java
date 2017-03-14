@@ -28,6 +28,7 @@ public class GetPrace {
      private PrintWriter  pWriter = null;
      private ServerSocket serverSocket ;
      private int type = 0;
+     private long time = 1000;
      void start() throws IOException {
          long time = 155;
         serverSocket = new ServerSocket(8888);
@@ -35,7 +36,6 @@ public class GetPrace {
             System.out.println("socket start");
             while(true){
                 if (type == 0) {
-                    time = new Date().getTime();
                     showConnect();
                 }else {
                     if (new Date().getTime() > (time + 3000)) {
@@ -48,12 +48,12 @@ public class GetPrace {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        socket.close();
     }
     public  void  showConnect() throws IOException {
         socket = serverSocket.accept();
         InetAddress address =socket.getInetAddress();
         System.out.println("IP:"+address);
+        time = new Date().getTime();
         inputStream = socket.getInputStream();
         inputStreamReader = new InputStreamReader(inputStream);
         bufferedReader= new BufferedReader(inputStreamReader);
@@ -68,6 +68,7 @@ public class GetPrace {
         inputStreamReader.close();
         bufferedReader.close();
         type = 1;
+        socket.close();
     }
     public void sendMsg() throws IOException {
         socket = serverSocket.accept();
@@ -79,5 +80,6 @@ public class GetPrace {
         outputStream.close();
         type = 0;
         System.out.println("send succeed");
+        socket.close();
     }
 }
