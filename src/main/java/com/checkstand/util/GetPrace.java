@@ -16,25 +16,32 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Date;
+
 @Component
 public class GetPrace {
-    @SuppressWarnings("resource")
-     Socket socket = null;
-     InputStreamReader inputStreamReader = null;
-     InputStream inputStream = null;
-     BufferedReader bufferedReader = null;
-     OutputStream outputStream = null;
-     PrintWriter  pWriter = null;
-     ServerSocket serverSocket ;
-     int type = 0;
+     private Socket socket = null;
+     private InputStreamReader inputStreamReader = null;
+     private InputStream inputStream = null;
+     private BufferedReader bufferedReader = null;
+     private OutputStream outputStream = null;
+     private PrintWriter  pWriter = null;
+     private ServerSocket serverSocket ;
+     private int type = 0;
      void start() throws IOException {
+         long time = 155;
         serverSocket = new ServerSocket(8888);
         try {
             System.out.println("socket start");
             while(true){
                 if (type == 0) {
+                    time = new Date().getTime();
                     showConnect();
                 }else {
+                    if (new Date().getTime() > (time + 3000)) {
+                        type = 0;
+                        continue;
+                    }
                     sendMsg();
                 }
             }
