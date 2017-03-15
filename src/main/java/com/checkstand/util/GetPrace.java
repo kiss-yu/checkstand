@@ -5,8 +5,10 @@ package com.checkstand.util;
  */
 
 import com.checkstand.controller.SystemController;
+import com.checkstand.service.GoodsService;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,66 +22,35 @@ import java.util.Date;
 
 @Component
 public class GetPrace {
-     private Socket socket = null;
-     private InputStreamReader inputStreamReader = null;
-     private InputStream inputStream = null;
-     private BufferedReader bufferedReader = null;
-     private OutputStream outputStream = null;
-     private PrintWriter  pWriter = null;
-     private ServerSocket serverSocket ;
-     private int type = 0;
-     private long time = 1000;
-     void start() throws IOException {
-         long time = 155;
-        serverSocket = new ServerSocket(8888);
-        try {
-            System.out.println("socket start");
-            while(true){
-                if (type == 0) {
-                    showConnect();
-                }else {
-                    if (new Date().getTime() > (time + 3000)) {
-                        type = 0;
-                        continue;
-                    }
-                    sendMsg();
-                }
+    @Resource
+    private GoodsService service;
+    private Socket socket = null;
+    public  void start() throws IOException {
+        ServerSocket serverSocket = new ServerSocket(8888);
+        System.out.println("socket start");
+        while((socket = serverSocket.accept()) != null){
+            try{
+                byte[] bs = new byte[20];
+                String id = "";
+                InetAddress address =socket.getInetAddress();
+                System.out.println("IP:"+address);
+                InputStream inputStream = socket.getInputStream();
+                int size = inputStream.read(bs);
+                for(int i = 0;i < size;i ++)
+                    id += (char)bs[i];
+                System.out.println("商品id==" + id);
+                OutputStream outputStream = socket.getOutputStream();
+                PrintWriter pWriter = new PrintWriter(outputStream);
+                pWriter.write("#" + service.selectByGoodsId(id).getGoodsPrace() + "@");
+                pWriter.flush();
+                pWriter.close();
+                outputStream.close();
+                inputStream.close();
+                socket.close();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+            catch (Exception e) {
+                socket.close();
+            }
         }
-    }
-    public  void  showConnect() throws IOException {
-        socket = serverSocket.accept();
-        InetAddress address =socket.getInetAddress();
-        System.out.println("IP:"+address);
-        time = new Date().getTime();
-        inputStream = socket.getInputStream();
-        inputStreamReader = new InputStreamReader(inputStream);
-        bufferedReader= new BufferedReader(inputStreamReader);
-        String string = null;
-        StringBuffer stringBuffer = new StringBuffer();
-        while((string = bufferedReader.readLine()) != null){
-            stringBuffer.append(string);
-        }
-        System.out.println("商品id==" + stringBuffer.toString());
-        socket.shutdownInput();
-        inputStream.close();
-        inputStreamReader.close();
-        bufferedReader.close();
-        type = 1;
-        socket.close();
-    }
-    public void sendMsg() throws IOException {
-        socket = serverSocket.accept();
-        outputStream = socket.getOutputStream();
-        pWriter = new PrintWriter(outputStream);
-        pWriter.write("#"+ SystemController.prace+"@");
-        pWriter.flush();
-        pWriter.close();
-        outputStream.close();
-        type = 0;
-        System.out.println("send succeed");
-        socket.close();
     }
 }
