@@ -1,5 +1,6 @@
 package com.checkstand.controller;
 
+import com.checkstand.ZFBUtil.ZFBEntrance;
 import com.checkstand.model.GoodsModel;
 import com.checkstand.service.GoodsService;
 import org.apache.commons.collections.map.HashedMap;
@@ -17,10 +18,12 @@ import java.util.Map;
  * Created by 11723 on 2017/3/13.
  */
 @Controller
-@RequestMapping("system")
+@RequestMapping("/system")
 public class SystemController {
     @Resource
     private GoodsService service;
+    @Resource
+    private ZFBEntrance entrance;
     @ResponseBody
     @RequestMapping(value = "/add",method = RequestMethod.GET)
     public void save(
@@ -54,6 +57,7 @@ public class SystemController {
     public Map<Object,Object> find(
             @RequestParam(value = "goodsId",defaultValue = "666")String goodsId
     ){
+        entrance.start();
         Map<Object,Object> map = new HashedMap();
         map.put("model",service.selectByGoodsId(goodsId));
         return map;

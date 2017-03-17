@@ -1,4 +1,4 @@
-package com.checkstand.controller;
+package com.checkstand.util;
 
 /**
  * Created by 11723 on 2017/3/13.
