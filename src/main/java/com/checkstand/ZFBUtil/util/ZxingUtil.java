@@ -1,4 +1,4 @@
-package com.checkstand.ZFBUtil;
+package com.checkstand.ZFBUtil.util;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;

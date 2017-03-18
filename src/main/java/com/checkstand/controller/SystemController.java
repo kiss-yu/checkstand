@@ -1,6 +1,6 @@
 package com.checkstand.controller;
 
-import com.checkstand.ZFBUtil.ZFBEntrance;
+import com.checkstand.ZFBUtil.service.impl.ZFBAlipayTradeServiceImpl;
 import com.checkstand.model.GoodsModel;
 import com.checkstand.service.GoodsService;
 import org.apache.commons.collections.map.HashedMap;
@@ -23,7 +23,7 @@ public class SystemController {
     @Resource
     private GoodsService service;
     @Resource
-    private ZFBEntrance entrance;
+    private ZFBAlipayTradeServiceImpl entrance;
     @ResponseBody
     @RequestMapping(value = "/add",method = RequestMethod.GET)
     public void save(
@@ -57,7 +57,6 @@ public class SystemController {
     public Map<Object,Object> find(
             @RequestParam(value = "goodsId",defaultValue = "666")String goodsId
     ){
-        entrance.start();
         Map<Object,Object> map = new HashedMap();
         map.put("model",service.selectByGoodsId(goodsId));
         return map;
