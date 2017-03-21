@@ -6,8 +6,7 @@ import org.springframework.stereotype.Component;
 /**
  * Created by 11723 on 2017/3/18.
  */
-@Component
-public class RefundParameterModel {
+public class RefundParameterModel implements Order{
     //订单支付时传入的商户订单号,不能和 trade_no同时为空。
     private String out_trade_no;
     //支付宝交易号，和商户订单号不能同时为空
@@ -96,7 +95,10 @@ public class RefundParameterModel {
         this.refund_amount = String.valueOf(refund_amount);
         return this;
     }
-    public String toJson(){
+
+
+    @Override
+    public String toJson() {
         return JSONObject.fromObject(this).toString();
     }
 }

@@ -1,5 +1,8 @@
 package com.checkstand.controller;
 
+import com.checkstand.ZFBUtil.config.Configs;
+import com.checkstand.ZFBUtil.model.AlipayParameterModel;
+import com.checkstand.ZFBUtil.service.impl.OrderProcessing.QueueManagement;
 import com.checkstand.ZFBUtil.service.impl.ZFBAlipayTradeServiceImpl;
 import com.checkstand.model.GoodsModel;
 import com.checkstand.service.GoodsService;
@@ -22,8 +25,6 @@ import java.util.Map;
 public class SystemController {
     @Resource
     private GoodsService service;
-    @Resource
-    private ZFBAlipayTradeServiceImpl entrance;
     @ResponseBody
     @RequestMapping(value = "/add",method = RequestMethod.GET)
     public void save(

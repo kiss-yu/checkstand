@@ -4,6 +4,10 @@ package com.checkstand.util;
  * Created by 11723 on 2017/3/13.
  */
 
+import com.checkstand.Data.CustomerData;
+import com.checkstand.service.SocketService;
+import com.checkstand.service.ZFBService;
+import com.checkstand.model.GoodsModel;
 import com.checkstand.service.GoodsService;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +23,12 @@ import java.net.Socket;
 public class GetPrace {
     @Resource
     private GoodsService service;
+    @Resource
+    private SocketService socketService;
+
+    @Resource
+    private CustomerData customerData;
+
     private Socket socket = null;
     private float endPrace;
     public  void start() throws IOException {
@@ -35,7 +45,7 @@ public class GetPrace {
                 for(int i = 0;i < size;i ++)
                     content += (char)bs[i];
                 switch (content){
-                    case "OK":settlement();break;
+                    case "OK":setTlement();break;
                     case "clear":clearPrace();break;
                     default:statisticalPrace(content);break;
                 }
@@ -47,18 +57,27 @@ public class GetPrace {
             }
         }
     }
-    private void settlement(){
-
+    private void setTlement(){
+        customerData.clearOneCustomer();
+        endPrace = 0;
+        sendData("#" + endPrace + "@");
+        sendQrCodeString();
         clearPrace();
     }
-
+    private void sendQrCodeString(){
+        String qr_code_string = socketService.invoicing();
+        sendData("#" + qr_code_string + "@");
+    }
     private void clearPrace(){
+        customerData.clearOneCustomer();
         endPrace = 0;
         sendData("#" + endPrace + "@");
     }
 
     private void statisticalPrace(String id) {
-        endPrace += service.selectByGoodsId(id).getGoodsPrace();
+        GoodsModel model = service.selectByGoodsId(id);
+        endPrace += model.getGoodsPrace();
+        customerData.insertGoods(model);
         System.out.println("商品id==" + id);
         sendData("#" + endPrace + "@");
 
@@ -77,5 +96,4 @@ public class GetPrace {
             e.printStackTrace();
         }
     }
-
 }

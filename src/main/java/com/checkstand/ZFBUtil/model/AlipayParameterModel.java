@@ -3,6 +3,7 @@ package com.checkstand.ZFBUtil.model;
 import com.alipay.api.domain.ExtendParams;
 import com.alipay.api.domain.GoodsDetail;
 import com.alipay.api.domain.SubMerchant;
+import com.checkstand.ZFBUtil.config.Configs;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Component;
 
@@ -16,9 +17,9 @@ import java.util.List;
 *
 * 支付宝接口接入参数集成类
 * 暂未支持花呗分期
+*
 * */
-@Component
-public class CreateAlipayParameterModel {
+public class AlipayParameterModel implements Order{
 
     //商户订单号,64个字符以内、只能包含字母、数字、下划线；需保证在商户端不重复
     //（必填）
@@ -65,7 +66,7 @@ public class CreateAlipayParameterModel {
     private ExtendParams extend_params;
     //该笔订单允许的最晚付款时间，逾期将关闭交易。取值范围：1m～15d。m-分钟，h-小时，d-天，1c-当天
     // （1c-当天的情况下，无论交易何时创建，都在0点关闭）。 该参数数值不接受小数点
-    private String timeout_express;
+    private String timeout_express = String.valueOf(Configs.getAlipay_out_time()) + "m";
     //二级商户信息,当前只对特殊银行机构特定场景下使用此字段
     private SubMerchant sub_merchant;
     //支付宝店铺的门店ID
@@ -75,7 +76,7 @@ public class CreateAlipayParameterModel {
         return out_trade_no;
     }
 
-    public CreateAlipayParameterModel setOut_trade_no(String out_trade_no) {
+    public AlipayParameterModel setOut_trade_no(String out_trade_no) {
         this.out_trade_no = out_trade_no;
         return this;
     }
@@ -84,7 +85,7 @@ public class CreateAlipayParameterModel {
         return seller_id;
     }
 
-    public CreateAlipayParameterModel setSeller_id(String seller_id) {
+    public AlipayParameterModel setSeller_id(String seller_id) {
         this.seller_id = seller_id;
         return this;
     }
@@ -93,7 +94,7 @@ public class CreateAlipayParameterModel {
         return total_amount;
     }
 
-    public CreateAlipayParameterModel setTotal_amount(double total_amount) {
+    public AlipayParameterModel setTotal_amount(double total_amount) {
         this.total_amount = String.valueOf(total_amount);
         return this;
     }
@@ -102,7 +103,7 @@ public class CreateAlipayParameterModel {
         return discountable_amount;
     }
 
-    public CreateAlipayParameterModel setDiscountable_amount(double discountable_amount) {
+    public AlipayParameterModel setDiscountable_amount(double discountable_amount) {
         this.discountable_amount = String.valueOf(discountable_amount);
         this.undiscountable_amount = String.valueOf(new Float(this.total_amount) - new Float(this.discountable_amount));
         return this;
@@ -112,7 +113,7 @@ public class CreateAlipayParameterModel {
         return undiscountable_amount;
     }
 
-    public CreateAlipayParameterModel setUndiscountable_amount(double undiscountable_amount) {
+    public AlipayParameterModel setUndiscountable_amount(double undiscountable_amount) {
         this.undiscountable_amount = String.valueOf(undiscountable_amount);
         this.discountable_amount = String.valueOf(new Float(this.total_amount) - new Float(this.undiscountable_amount));
         return this;
@@ -122,7 +123,7 @@ public class CreateAlipayParameterModel {
         return buyer_logon_id;
     }
 
-    public CreateAlipayParameterModel setBuyer_logon_id(String buyer_logon_id) {
+    public AlipayParameterModel setBuyer_logon_id(String buyer_logon_id) {
         this.buyer_logon_id = buyer_logon_id;
         return this;
     }
@@ -131,7 +132,7 @@ public class CreateAlipayParameterModel {
         return subject;
     }
 
-    public CreateAlipayParameterModel setSubject(String subject) {
+    public AlipayParameterModel setSubject(String subject) {
         this.subject = subject;
         return this;
     }
@@ -140,7 +141,7 @@ public class CreateAlipayParameterModel {
         return body;
     }
 
-    public CreateAlipayParameterModel setBody(String body) {
+    public AlipayParameterModel setBody(String body) {
         this.body = body;
         return this;
     }
@@ -149,7 +150,7 @@ public class CreateAlipayParameterModel {
         return goods_detail;
     }
 
-    public CreateAlipayParameterModel setGoods_detail(List<GoodsDetail> goods_detail) {
+    public AlipayParameterModel setGoods_detail(List<GoodsDetail> goods_detail) {
         this.goods_detail = goods_detail;
         double price = 0;
         for (GoodsDetail detail:goods_detail)
@@ -162,7 +163,7 @@ public class CreateAlipayParameterModel {
         return operator_id;
     }
 
-    public CreateAlipayParameterModel setOperator_id(String operator_id) {
+    public AlipayParameterModel setOperator_id(String operator_id) {
         this.operator_id = operator_id;
         return this;
     }
@@ -171,7 +172,7 @@ public class CreateAlipayParameterModel {
         return store_id;
     }
 
-    public CreateAlipayParameterModel setStore_id(String store_id) {
+    public AlipayParameterModel setStore_id(String store_id) {
         this.store_id = store_id;
         return this;
     }
@@ -180,7 +181,7 @@ public class CreateAlipayParameterModel {
         return terminal_id;
     }
 
-    public CreateAlipayParameterModel setTerminal_id(String terminal_id) {
+    public AlipayParameterModel setTerminal_id(String terminal_id) {
         this.terminal_id = terminal_id;
         return this;
     }
@@ -189,7 +190,7 @@ public class CreateAlipayParameterModel {
         return extend_params;
     }
 
-    public CreateAlipayParameterModel setExtend_params(ExtendParams extend_params) {
+    public AlipayParameterModel setExtend_params(ExtendParams extend_params) {
         this.extend_params = extend_params;
         return this;
     }
@@ -198,8 +199,8 @@ public class CreateAlipayParameterModel {
         return timeout_express;
     }
 
-    public CreateAlipayParameterModel setTimeout_express(int timeout_express) {
-        this.timeout_express = String.valueOf(timeout_express);
+    public AlipayParameterModel setTimeout_express(int timeout_express) {
+        this.timeout_express = String.valueOf(timeout_express) + "m";
         return this;
     }
 
@@ -207,7 +208,7 @@ public class CreateAlipayParameterModel {
         return sub_merchant;
     }
 
-    public CreateAlipayParameterModel setSub_merchant(SubMerchant sub_merchant) {
+    public AlipayParameterModel setSub_merchant(SubMerchant sub_merchant) {
         this.sub_merchant = sub_merchant;
         return this;
     }
@@ -216,10 +217,11 @@ public class CreateAlipayParameterModel {
         return alipay_store_id;
     }
 
-    public CreateAlipayParameterModel setAlipay_store_id(String alipay_store_id) {
+    public AlipayParameterModel setAlipay_store_id(String alipay_store_id) {
         this.alipay_store_id = alipay_store_id;
         return this;
     }
+    @Override
     public String toJson(){
 //        String json = "{";
 //        json += getOut_trade_no() != null ? "out_trade_no:\"" + getOut_trade_no() +"\"," :"";

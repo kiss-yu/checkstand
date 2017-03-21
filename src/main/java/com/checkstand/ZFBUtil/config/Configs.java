@@ -33,11 +33,17 @@ public class Configs {
 
     private static long heartbeatDelay ; // 交易保障线程第一次调度延迟（秒）
     private static long heartbeatDuration ; // 交易保障线程调度间隔（秒）
-
+    private static int alipay_out_time;//交易超时最大时长
+    private static int pay_order_max;//支付队列容量
+    private static int refund_order_max;//退款队列容量
+    private static String qr_code_filepath;
     private Configs() {
         // No Constructor
     }
 
+    static {
+        init("zfbinfo.properties");
+    }
     // 根据文件名读取配置文件，文件后缀名必须为.properties
     public synchronized static void init(String filePath) {
         if (configs != null) {
@@ -75,6 +81,10 @@ public class Configs {
         // 交易保障调度线程
         heartbeatDelay = configs.getLong("heartbeat_delay");
         heartbeatDuration = configs.getLong("heartbeat_duration");
+        alipay_out_time = configs.getInt("alipay_out_time");
+        pay_order_max = configs.getInt("pay_order_max");
+        refund_order_max = configs.getInt("refund_order_max");
+        qr_code_filepath = configs.getString("qr_code_filepath");
 
         log.info("配置文件名: " + filePath);
         log.info(description());
@@ -104,6 +114,7 @@ public class Configs {
 
         sb.append(", 交易保障调度延迟(秒): ").append(heartbeatDelay).append("\n");
         sb.append(", 交易保障调度间隔(秒): ").append(heartbeatDuration).append("\n");
+        sb.append(", 交易超时最大时长(分): ").append(alipay_out_time).append("\n");
         sb.append("}");
         return sb.toString();
     }
@@ -238,5 +249,37 @@ public class Configs {
 
     public static void setHeartbeatDuration(long heartbeatDuration) {
         Configs.heartbeatDuration = heartbeatDuration;
+    }
+
+    public static int getAlipay_out_time() {
+        return alipay_out_time;
+    }
+
+    public static void setAlipay_out_time(int alipay_out_time) {
+        Configs.alipay_out_time = alipay_out_time;
+    }
+
+    public static int getPay_order_max() {
+        return pay_order_max;
+    }
+
+    public static void setPay_order_max(int pay_order_max) {
+        Configs.pay_order_max = pay_order_max;
+    }
+
+    public static int getRefund_order_max() {
+        return refund_order_max;
+    }
+
+    public static void setRefund_order_max(int refund_order_max) {
+        Configs.refund_order_max = refund_order_max;
+    }
+
+    public static String getQr_code_filepath() {
+        return qr_code_filepath;
+    }
+
+    public static void setQr_code_filepath(String qr_code_filepath) {
+        Configs.qr_code_filepath = qr_code_filepath;
     }
 }

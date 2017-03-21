@@ -3,6 +3,7 @@ package com.checkstand.ZFBUtil.service.impl;
 import com.alipay.api.DefaultAlipayClient;
 import com.checkstand.ZFBUtil.config.Configs;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by 11723 on 2017/3/18.

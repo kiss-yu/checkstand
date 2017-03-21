@@ -27,9 +27,8 @@ public class GoodsDao extends SessionDao{
             Criteria criteria = goodsSession.createCriteria(GoodsModel.class);
             model = (GoodsModel)criteria.add(Restrictions.eq("goodsId",goodsId)).uniqueResult();
             commitAndExceptionHandling();
-        }
-        catch (Exception e){
-            model = new GoodsModel("12345",new Float(98.8));
+        }catch (Exception e){
+            model = null;
         }
         return model;
     }
