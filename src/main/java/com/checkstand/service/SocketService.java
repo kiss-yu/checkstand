@@ -14,10 +14,9 @@ public class SocketService {
     private ZFBService zfbService;
     @Resource
     private CustomerService customerService;
-    @Resource
-    private CustomerData customerData;
+
     public String invoicing(){
-        customerService.insert(customerData.getOne_customer());
+        customerService.insert(CustomerData.one_customer);
         return zfbService.getQrCodeFilePath(zfbService.createQrCodePy());
     }
 }

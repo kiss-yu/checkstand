@@ -12,7 +12,6 @@ public class CSocket implements InitializingBean {
 	@Override
 	public void afterPropertiesSet(){
 		new Thread(new Runnable() {
-
 			@Override
 			public void run() {
 				try {

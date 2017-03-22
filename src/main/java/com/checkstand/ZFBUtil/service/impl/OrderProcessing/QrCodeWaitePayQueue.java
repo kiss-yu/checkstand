@@ -1,10 +1,7 @@
 package com.checkstand.ZFBUtil.service.impl.OrderProcessing;
 
-import com.alipay.api.AlipayApiException;
 import com.checkstand.ZFBUtil.config.Configs;
 import com.checkstand.ZFBUtil.model.Order;
-import com.checkstand.ZFBUtil.service.ZFBService;
-import org.springframework.stereotype.Component;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;

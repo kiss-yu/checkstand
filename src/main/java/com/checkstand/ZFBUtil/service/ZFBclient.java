@@ -6,6 +6,6 @@ import org.springframework.stereotype.Component;
 /**
  * Created by 11723 on 2017/3/18.
  */
-public class ZFBService extends ZFBAlipayTradeServiceImpl{
+public class ZFBclient extends ZFBAlipayTradeServiceImpl{
 
 }

@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -26,20 +27,17 @@ public class GetPrace {
     @Resource
     private SocketService socketService;
 
-    @Resource
-    private CustomerData customerData;
-
     private Socket socket = null;
     private float endPrace;
     public  void start() throws IOException {
         ServerSocket serverSocket = new ServerSocket(8888);
-//        System.out.println("socket start");
+        System.out.println("========socket start==========");
         while((socket = serverSocket.accept()) != null){
             try{
                 byte[] bs = new byte[20];
                 String content = "";
-//                InetAddress address =socket.getInetAddress();
-//                System.out.println("IP:"+address);
+                InetAddress address =socket.getInetAddress();
+                System.out.println("IP:"+address);
                 InputStream inputStream = socket.getInputStream();
                 int size = inputStream.read(bs);
                 for(int i = 0;i < size;i ++)
@@ -58,10 +56,10 @@ public class GetPrace {
         }
     }
     private void setTlement(){
-        customerData.clearOneCustomer();
         endPrace = 0;
         sendData("#" + endPrace + "@");
         sendQrCodeString();
+        CustomerData.clearOneCustomer();
         clearPrace();
     }
     private void sendQrCodeString(){
@@ -69,7 +67,7 @@ public class GetPrace {
         sendData("#" + qr_code_string + "@");
     }
     private void clearPrace(){
-        customerData.clearOneCustomer();
+        CustomerData.clearOneCustomer();
         endPrace = 0;
         sendData("#" + endPrace + "@");
     }
@@ -77,7 +75,7 @@ public class GetPrace {
     private void statisticalPrace(String id) {
         GoodsModel model = service.selectByGoodsId(id);
         endPrace += model.getGoodsPrace();
-        customerData.insertGoods(model);
+        CustomerData.insertGoods(model);
         System.out.println("商品id==" + id);
         sendData("#" + endPrace + "@");
 

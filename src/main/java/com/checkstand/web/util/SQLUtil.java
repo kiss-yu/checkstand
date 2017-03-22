@@ -66,6 +66,9 @@ public class SQLUtil {
 		return stringBuilder.toString();
 	}
 
+	public static int getOffset(int curPage, int limit) {
+		return (curPage - 1) * limit;
+	}
 	public static String stringToStringgroup(String targetString) {
 		if (targetString==null) {
 			return null;

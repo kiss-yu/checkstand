@@ -3,8 +3,7 @@ package com.checkstand.ZFBUtil.service.impl.OrderProcessing;
 import com.alipay.api.AlipayApiException;
 import com.checkstand.ZFBUtil.config.Configs;
 import com.checkstand.ZFBUtil.model.Order;
-import com.checkstand.ZFBUtil.service.ZFBService;
-import org.springframework.stereotype.Component;
+import com.checkstand.ZFBUtil.service.ZFBclient;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -20,7 +19,7 @@ public class RefundQueue implements AlipayQueue ,Runnable{
     public void run() {
         try {
             model = refund_alipay_order.take();
-            System.out.println(ZFBService.alipayRefund(model));
+            System.out.println(ZFBclient.alipayRefund(model));
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (AlipayApiException e1) {

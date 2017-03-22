@@ -2,10 +2,12 @@ package com.checkstand.service;
 
 import com.checkstand.dao.CustomerDao;
 import com.checkstand.model.OneCustomerModel;
+import com.checkstand.web.util.SQLUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by 11723 on 2017/3/21.
@@ -18,6 +20,23 @@ public class CustomerService {
     public void insert(OneCustomerModel model){
         model.setBuyMessage();
         customerDao.insert(model);
+    }
+
+    public void deleteByCustomerId(String customer_id){
+        customerDao.delete(customerDao.selectByCustomerId(customer_id));
+    }
+
+    public OneCustomerModel find(String customer_id){
+        return customerDao.selectByCustomerId(customer_id);
+    }
+
+    public void updata(OneCustomerModel model){
+        customerDao.updata(model);
+    }
+
+
+    public List<OneCustomerModel> select(String customer_id,Date query_start_time,Date query_end_time,int page,int limit,String sort,String order,String keyword){
+        return customerDao.select(customer_id,query_start_time,query_end_time, SQLUtil.getOffset(page,limit),limit,sort,order,SQLUtil.stringToStringgroup(keyword));
     }
 
 }

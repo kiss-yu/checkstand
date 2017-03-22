@@ -6,6 +6,7 @@ import com.checkstand.ZFBUtil.service.impl.OrderProcessing.QueueManagement;
 import com.checkstand.ZFBUtil.service.impl.ZFBAlipayTradeServiceImpl;
 import com.checkstand.model.GoodsModel;
 import com.checkstand.service.GoodsService;
+import org.apache.commons.collections.map.DefaultedMap;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.Map;
 
 
@@ -29,14 +31,25 @@ public class SystemController {
     @RequestMapping(value = "/add",method = RequestMethod.GET)
     public void save(
             @RequestParam(value = "goodsId",defaultValue = "666")String goodsId,
-            @RequestParam(value = "goodsPrace",defaultValue = "0")Float goodsPrace
+            @RequestParam(value = "goodsPrace",defaultValue = "0")Float goodsPrace,
+            @RequestParam(value = "goodsDescribe",defaultValue = "测试商品") String goodsDescribe,
+            @RequestParam(value = "inventory",defaultValue = "100") Integer inventory
     ){
-        GoodsModel model = new GoodsModel(goodsId,goodsPrace);
+        GoodsModel model = new GoodsModel(goodsId,goodsPrace,goodsDescribe,inventory);
         service.insert(model);
     }
 
     @ResponseBody
-    @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/insert",method = RequestMethod.GET)
+    public void insert(
+            @RequestParam(value = "goodsId",defaultValue = "666")String goodsId,
+            @RequestParam(value = "number",defaultValue = "1") Integer number
+    ){
+                service.insert(service.selectByGoodsId(goodsId),number);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/delete ",method = RequestMethod.DELETE)
     public void delete(
             @RequestParam(value = "goodsId",defaultValue = "666")String goodsId
     ){

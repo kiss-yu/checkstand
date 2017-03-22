@@ -27,13 +27,12 @@ public class GoodsModel implements Serializable {
         this.goodsPrace = goodsPrace;
     }
 
-//    public Integer getId() {
-//        return id;
-//    }
-//
-//    public void setId(Integer id) {
-//        this.id = id;
-//    }
+    public GoodsModel(String goodsId,Float goodsPrace,String goodsDescribe,Integer inventory){
+        this.goodsId = goodsId;
+        this.goodsPrace = goodsPrace;
+        this.goodsDescribe = goodsDescribe;
+        this.inventory = inventory;
+    }
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid",strategy = "assigned")
@@ -74,6 +73,7 @@ public class GoodsModel implements Serializable {
         this.inventory = inventory;
     }
 
+    @Column(columnDefinition="INT default 0")
     public Integer getSold_number() {
         return sold_number;
     }
