@@ -18,7 +18,7 @@ public class GoodsService {
 
     public void insert(GoodsModel model,int ... add_number){
         GoodsModel ago_model = selectByGoodsId(model.getGoodsId());
-        if (ago_model == null || add_number.length > 1){
+        if (ago_model == null || add_number.length != 1){
             model.setInventory(model.getInventory());
             dao.insert(model);
         }else {
@@ -53,7 +53,7 @@ public class GoodsService {
         GoodsModel ago_model = selectByGoodsId(model.getGoodsId());
         if (ago_model == null || sold_number.length > 1 ||(sold_number.length == 1 && sold_number[0] > ago_model.getInventory()))
             return ;
-        settingSoldNumber(ago_model,sold_number.length == 0 ? ago_model.getSold_number() + 1:ago_model.getSold_number() - sold_number[0]);
+        settingSoldNumber(ago_model,sold_number.length == 0 ? ago_model.getSold_number() + 1:ago_model.getSold_number() + sold_number[0]);
         settingInventory(ago_model,sold_number.length == 0 ? ago_model.getInventory() - 1:ago_model.getInventory() - sold_number[0]);
     }
 

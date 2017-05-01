@@ -15,9 +15,9 @@ public class GoodsModel implements Serializable {
 //    private Integer id;
     private String goodsId;//商品id
     private String goodsDescribe;//商品描述
-    private Float goodsPrace;//商品价格
-    private Integer inventory;//商品的库存
-    private Integer sold_number;//商品的售出量
+    private float goodsPrace;//商品价格
+    private int inventory;//商品的库存
+    private int sold_number;//商品的售出量
     private List<OneCustomerModel> customerModels;
     public GoodsModel(){
 
@@ -61,24 +61,20 @@ public class GoodsModel implements Serializable {
         this.goodsPrace = goodsPrace;
     }
 
-    public void setGoodsPrace(Float goodsPrace) {
-        this.goodsPrace = goodsPrace;
-    }
-
-    public Integer getInventory() {
+    public int getInventory() {
         return inventory;
     }
 
-    public void setInventory(Integer inventory) {
+    public void setInventory(int inventory) {
         this.inventory = inventory;
     }
 
-    @Column(columnDefinition="INT default 0")
-    public Integer getSold_number() {
+    @Column(columnDefinition="int(11) default 0")
+    public int getSold_number() {
         return sold_number;
     }
 
-    public void setSold_number(Integer sold_number) {
+    public void setSold_number(int sold_number) {
         this.sold_number = sold_number;
     }
 

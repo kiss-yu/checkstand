@@ -15,8 +15,16 @@ public class SocketService {
     @Resource
     private CustomerService customerService;
 
+    public static boolean type = false;
     public String invoicing(){
         customerService.insert(CustomerData.one_customer);
         return zfbService.getQrCodeFilePath(zfbService.createQrCodePy());
+    }
+    public boolean getMsg(){
+        if (type){
+            type = false;
+            return true;
+        }
+        return false;
     }
 }

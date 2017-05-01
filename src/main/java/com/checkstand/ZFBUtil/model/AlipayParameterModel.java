@@ -66,7 +66,7 @@ public class AlipayParameterModel implements Order{
     private ExtendParams extend_params;
     //该笔订单允许的最晚付款时间，逾期将关闭交易。取值范围：1m～15d。m-分钟，h-小时，d-天，1c-当天
     // （1c-当天的情况下，无论交易何时创建，都在0点关闭）。 该参数数值不接受小数点
-    private String timeout_express = String.valueOf(Configs.getAlipay_out_time()) + "m";
+    private String timeout_express = String.valueOf(Configs.getAlipay_out_time()) + "d";
     //二级商户信息,当前只对特殊银行机构特定场景下使用此字段
     private SubMerchant sub_merchant;
     //支付宝店铺的门店ID

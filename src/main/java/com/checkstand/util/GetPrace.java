@@ -45,6 +45,7 @@ public class GetPrace {
                 switch (content){
                     case "OK":setTlement();break;
                     case "clear":clearPrace();break;
+                    case "wait" :waitPay();break;
                     default:statisticalPrace(content);break;
                 }
                 inputStream.close();
@@ -52,6 +53,19 @@ public class GetPrace {
             }
             catch (Exception e) {
                 socket.close();
+            }
+        }
+    }
+    private void waitPay(){
+        while (true){
+            if (socketService.getMsg()){
+                sendData("ok");
+                return;
+            }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }

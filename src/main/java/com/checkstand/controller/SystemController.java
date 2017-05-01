@@ -6,6 +6,7 @@ import com.checkstand.ZFBUtil.service.impl.OrderProcessing.QueueManagement;
 import com.checkstand.ZFBUtil.service.impl.ZFBAlipayTradeServiceImpl;
 import com.checkstand.model.GoodsModel;
 import com.checkstand.service.GoodsService;
+import com.checkstand.service.SocketService;
 import org.apache.commons.collections.map.DefaultedMap;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.stereotype.Controller;
@@ -33,7 +34,7 @@ public class SystemController {
             @RequestParam(value = "goodsId",defaultValue = "666")String goodsId,
             @RequestParam(value = "goodsPrace",defaultValue = "0")Float goodsPrace,
             @RequestParam(value = "goodsDescribe",defaultValue = "测试商品") String goodsDescribe,
-            @RequestParam(value = "inventory",defaultValue = "100") Integer inventory
+            @RequestParam(value = "inventory",defaultValue = "100") int inventory
     ){
         GoodsModel model = new GoodsModel(goodsId,goodsPrace,goodsDescribe,inventory);
         service.insert(model);
@@ -74,5 +75,10 @@ public class SystemController {
         Map<Object,Object> map = new HashedMap();
         map.put("model",service.selectByGoodsId(goodsId));
         return map;
+    }
+    @ResponseBody
+    @RequestMapping(value = "/ZFBmsg",method = RequestMethod.GET)
+    public void ZFBmsg(){
+        SocketService.type = true;
     }
 }

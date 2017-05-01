@@ -42,7 +42,7 @@ public class OneCustomerModel implements Serializable {
         this.customer_id = customer_id;
     }
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST}, fetch = FetchType.EAGER)
     @JoinTable(name="goods_to_customer",
             joinColumns={@JoinColumn(name="customer_id",columnDefinition = "varchar(30)")},
             inverseJoinColumns={@JoinColumn(name="goodsId",columnDefinition = "varchar(30)")} )

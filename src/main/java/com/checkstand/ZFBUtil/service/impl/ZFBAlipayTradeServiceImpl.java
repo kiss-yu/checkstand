@@ -29,14 +29,15 @@ public class ZFBAlipayTradeServiceImpl{
     public static AlipayTradePrecreateResponse createQrCodeAlipay(Order parameterModel, String QrCodeFilePath) throws AlipayApiException {
         AlipayTradePrecreateRequest request = new AlipayTradePrecreateRequest();
         request.setBizContent(parameterModel.toJson());
+        request.setNotifyUrl(Configs.getNotify_url());
         log.info("json = " + request.getBizContent());
         AlipayTradePrecreateResponse response = alipayClient.execute(request);
         if(response.isSuccess()){
             // 需要修改为运行机器上的路径
             String filePath = String.format(QrCodeFilePath + "\\%s.png", response.getOutTradeNo());
-            ZxingUtil.getQRCodeImge(response.getQrCode(), 128, filePath);
+            ZxingUtil.getQRCodeImge(response.getQrCode(), 33, filePath);
             log.info("create Qr-Code succeed \n filepath:" + filePath);
-            System.out.println(response.getBody());
+            log.info(response.getBody());
             return response;
         }
         log.info("create Qr-Code fail\nmessage:" + response.getMsg());

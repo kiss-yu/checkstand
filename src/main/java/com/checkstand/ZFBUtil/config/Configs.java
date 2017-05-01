@@ -34,9 +34,13 @@ public class Configs {
     private static long heartbeatDelay ; // 交易保障线程第一次调度延迟（秒）
     private static long heartbeatDuration ; // 交易保障线程调度间隔（秒）
     private static int alipay_out_time;//交易超时最大时长
-    private static int pay_order_max;//支付队列容量
-    private static int refund_order_max;//退款队列容量
     private static String qr_code_filepath;
+
+    public static String getNotify_url() {
+        return notify_url;
+    }
+
+    private static String notify_url;
     private Configs() {
         // No Constructor
     }
@@ -82,10 +86,8 @@ public class Configs {
         heartbeatDelay = configs.getLong("heartbeat_delay");
         heartbeatDuration = configs.getLong("heartbeat_duration");
         alipay_out_time = configs.getInt("alipay_out_time");
-        pay_order_max = configs.getInt("pay_order_max");
-        refund_order_max = configs.getInt("refund_order_max");
         qr_code_filepath = configs.getString("qr_code_filepath");
-
+        notify_url =  configs.getString("notify_url");
         log.info("配置文件名: " + filePath);
         log.info(description());
     }
@@ -258,23 +260,6 @@ public class Configs {
     public static void setAlipay_out_time(int alipay_out_time) {
         Configs.alipay_out_time = alipay_out_time;
     }
-
-    public static int getPay_order_max() {
-        return pay_order_max;
-    }
-
-    public static void setPay_order_max(int pay_order_max) {
-        Configs.pay_order_max = pay_order_max;
-    }
-
-    public static int getRefund_order_max() {
-        return refund_order_max;
-    }
-
-    public static void setRefund_order_max(int refund_order_max) {
-        Configs.refund_order_max = refund_order_max;
-    }
-
     public static String getQr_code_filepath() {
         return qr_code_filepath;
     }
