@@ -3,8 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link type="text/css" href="css/index.css" rel="stylesheet">
 </head>
 <body>
-    hello
+<div class="box">
+    <h2>最近七天的销售情况</h2>
+    <div id="Sales_statistics" class="div"></div>
+</div>
+<div class="box">
+    <h2>最近1个月商品销售量前五商品</h2>
+    <div id="goods_sort" class="div"></div>
+</div>
+<div class="box suggest">
+    <h3>销售动态</h3>
+</div>
+<div class="box">
+    <h2>即将售完的商品  库存警告</h2>
+    <div id="inventory_warring" class="div"></div>
+</div>
+<div class="box">
+    <h2>最近一月热门商品与总售出商品的比例</h2>
+    <div id="goods_percentage" class="div"></div>
+</div>
+<div class="box suggest">
+    <h3>进货提醒</h3>
+    <p id="suggest_content" style="text-align: left;padding-left: 10px">
+        <span style="color: #fb0202;font-weight: bold;font-size: 23px">根据以往数据分析：</span>
+        <br/>
+        在未来10天里商品10的销售量可能会达到5000件，目前商品1的库存仅为2521件，建议商品1在5天内进货2479件
+        <br/>
+        <br/>
+        商品1，商品2，商品3的库存即将耗尽。根据数据分析到商品1:商品3应按照10:6的比例进货最佳
+        <br />
+        <br/>
+        商品4在最近时间段售出量将接近为0，可以暂时不需要进货
+    </p>
+</div>
+<script language="JavaScript" src="js/echarts.js" ></script>
+<script src="index.js"></script>
 </body>
 </html>

@@ -16,20 +16,12 @@ import java.util.List;
 @Entity
 @Table(name = "customer")
 public class OneCustomerModel implements Serializable {
-//    private int id;
-    private String customer_id;
-    private Date buy_time;
-    private int buy_number;
-    private List<GoodsModel> goodsModels = new ArrayList<>();
+    private String customer_id;//买家id
+    private Date buy_time;//购买时间
+    private int buy_number;//购买商品数量
+    private float account;//消费金额
+    private List<GoodsModel> goodsModels = new ArrayList<>();//购买了哪些商品
 
-
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid",strategy = "assigned")
@@ -42,10 +34,11 @@ public class OneCustomerModel implements Serializable {
         this.customer_id = customer_id;
     }
 
-    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST}, fetch = FetchType.EAGER)
-    @JoinTable(name="goods_to_customer",
-            joinColumns={@JoinColumn(name="customer_id",columnDefinition = "varchar(30)")},
-            inverseJoinColumns={@JoinColumn(name="goodsId",columnDefinition = "varchar(30)")} )
+    @OneToMany(fetch = FetchType.EAGER,targetEntity = GoodsModel.class,cascade =      //单项一对多配置
+            {
+                    CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE,
+            })
+    @JoinColumns(value={@JoinColumn(name="pid",referencedColumnName="goodId")})
     public List<GoodsModel> getGoodsModels() {
         return goodsModels;
     }
@@ -69,6 +62,15 @@ public class OneCustomerModel implements Serializable {
     public void setBuy_number(int buy_number) {
         this.buy_number = buy_number;
     }
+
+    public float getAccount() {
+        return account;
+    }
+
+    public void setAccount(float account) {
+        this.account = account;
+    }
+
     public void setBuyMessage(){
         this.buy_time = new Date();
         this.buy_number = getGoodsModels().size();

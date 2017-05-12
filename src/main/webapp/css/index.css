@@ -1,0 +1,18 @@
+.box{
+  float: left;
+  width: 700px;
+  height: 500px;
+  text-align: center;
+}
+.div{
+  /*position: absolute;*/
+  width: 600px;
+  height: 400px;
+}
+h2{
+  color: #fb0202;
+  font-weight: 900;
+}
+.suggest{
+  width: 400px;
+}

@@ -21,15 +21,18 @@ public class ZFBService {
 
     public String createQrCodePy(){
         AlipayParameterModel alipay_parameter_model = new AlipayParameterModel();
-        for (GoodsModel good:CustomerData.one_customer.getGoodsModels()){
-            alipay_parameter_model.setTotal_amount(
-                    Float.valueOf(alipay_parameter_model.getTotal_amount() == null ? "0" : alipay_parameter_model.getTotal_amount())
-                    + good.getGoodsPrace());
-            goodsService.soldGoods(good);
-        }
-        alipay_parameter_model.setSubject(CustomerData.one_customer.getGoodsModels().get(0).getGoodsDescribe() == null
-                ? "kiss" + System.currentTimeMillis()
-                : CustomerData.one_customer.getGoodsModels().get(0).getGoodsDescribe());
+//        for (GoodsModel good:CustomerData.one_customer.getGoodsModels()){
+//            alipay_parameter_model.setTotal_amount(
+//                    Float.valueOf(alipay_parameter_model.getTotal_amount() == null ? "0" : alipay_parameter_model.getTotal_amount())
+//                    + good.getGoodsPrace());
+//            goodsService.soldGoods(good);
+//        }
+        alipay_parameter_model.setTimeout_express(10);
+        alipay_parameter_model.setTotal_amount(99.99D);
+//        alipay_parameter_model.setSubject(CustomerData.one_customer.getGoodsModels().get(0).getGoodsDescribe() == null
+//                ? "kiss" + System.currentTimeMillis()
+//                : CustomerData.one_customer.getGoodsModels().get(0).getGoodsDescribe());
+        alipay_parameter_model.setSubject("收银台测试商品");
         String out_trade_no = "kiss_" + System.currentTimeMillis();
         alipay_parameter_model.setOut_trade_no(out_trade_no);
         try {

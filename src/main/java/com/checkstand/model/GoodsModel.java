@@ -1,10 +1,12 @@
 package com.checkstand.model;
 
+import net.sf.json.JSONObject;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 11723 on 2017/3/14.
@@ -12,15 +14,13 @@ import java.util.List;
 @Entity
 @Table(name = "goods")
 public class GoodsModel implements Serializable {
-//    private Integer id;
     private String goodsId;//商品id
+    private String title;//商品标题
     private String goodsDescribe;//商品描述
     private float goodsPrace;//商品价格
     private int inventory;//商品的库存
-    private int sold_number;//商品的售出量
-    private List<OneCustomerModel> customerModels;
+    private int soldNumber;//售出数量
     public GoodsModel(){
-
     }
     public GoodsModel(String goodsId,Float goodsPrace){
         this.goodsId = goodsId;
@@ -39,6 +39,14 @@ public class GoodsModel implements Serializable {
     @Column(length = 30)
     public String getGoodsId() {
         return goodsId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setGoodsId(String goodsId) {
@@ -69,24 +77,15 @@ public class GoodsModel implements Serializable {
         this.inventory = inventory;
     }
 
-    @Column(columnDefinition="int(11) default 0")
-    public int getSold_number() {
-        return sold_number;
+    public int getSoldNumber() {
+        return soldNumber;
     }
 
-    public void setSold_number(int sold_number) {
-        this.sold_number = sold_number;
+    public void setSoldNumber(int soldNumber) {
+        this.soldNumber = soldNumber;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="goods_to_customer",
-            joinColumns={@JoinColumn(name="goodsId",columnDefinition = "varchar(30)")},
-            inverseJoinColumns={@JoinColumn(name="customer_id",columnDefinition = "varchar(30)")} )
-    public List<OneCustomerModel> getCustomerModels() {
-        return customerModels;
-    }
-
-    public void setCustomerModels(List<OneCustomerModel> customerModels) {
-        this.customerModels = customerModels;
+    public String toJson(){
+        return JSONObject.fromObject(this).toString();
     }
 }

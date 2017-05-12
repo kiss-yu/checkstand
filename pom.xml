@@ -18,7 +18,11 @@
     <log4j.version>1.2.17</log4j.version>
   </properties>
   <dependencies>
-
+    <dependency>
+      <groupId>org.glassfish.web</groupId>
+      <artifactId>javax.servlet.jsp.jstl</artifactId>
+      <version>1.2.2</version>
+    </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-orm</artifactId>
@@ -360,8 +364,6 @@
       <version>2.4</version>
       <classifier>jdk15</classifier>
     </dependency>
-
-
 
   </dependencies>
   <build>

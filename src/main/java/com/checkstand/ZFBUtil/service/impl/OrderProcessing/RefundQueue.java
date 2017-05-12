@@ -12,7 +12,7 @@ import java.util.concurrent.BlockingQueue;
  * Created by 11723 on 2017/3/19.
  */
 public class RefundQueue implements AlipayQueue ,Runnable{
-    static final int QUEUE_SIZE = Configs.getRefund_order_max();
+    static final int QUEUE_SIZE = 300;
     static final BlockingQueue<Order> refund_alipay_order = new ArrayBlockingQueue<Order>(QUEUE_SIZE);
     private Order model = null;
     @Override

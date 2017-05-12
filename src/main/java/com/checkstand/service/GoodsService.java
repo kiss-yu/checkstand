@@ -43,9 +43,6 @@ public class GoodsService {
     * 更新商品时  如果库存为0时不删除该商品
     * */
     public void updata(GoodsModel model){
-//        if (model.getInventory() == 0)
-//            delete(model);
-//        else
             dao.updata(model);
     }
 
@@ -53,7 +50,6 @@ public class GoodsService {
         GoodsModel ago_model = selectByGoodsId(model.getGoodsId());
         if (ago_model == null || sold_number.length > 1 ||(sold_number.length == 1 && sold_number[0] > ago_model.getInventory()))
             return ;
-        settingSoldNumber(ago_model,sold_number.length == 0 ? ago_model.getSold_number() + 1:ago_model.getSold_number() + sold_number[0]);
         settingInventory(ago_model,sold_number.length == 0 ? ago_model.getInventory() - 1:ago_model.getInventory() - sold_number[0]);
     }
 
@@ -65,7 +61,6 @@ public class GoodsService {
 
     private void settingSoldNumber(GoodsModel model,int sold_number){
         sold_number = sold_number > model.getInventory() ? model.getInventory() : sold_number;
-        model.setSold_number(sold_number);
         updata(model);
     }
 
