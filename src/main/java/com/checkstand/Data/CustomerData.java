@@ -12,6 +12,7 @@ public class CustomerData {
 
     public static void clearOneCustomer(){
         one_customer.getGoodsModels().clear();
+        one_customer.setCustomer_id("");
     }
 
     public static void insertGoods(GoodsModel model){

@@ -5,6 +5,7 @@ package com.checkstand.util;
  */
 
 import com.checkstand.Data.CustomerData;
+import com.checkstand.service.CustomerService;
 import com.checkstand.service.SocketService;
 import com.checkstand.service.ZFBService;
 import com.checkstand.model.GoodsModel;
@@ -29,8 +30,10 @@ public class GetPrace {
     private GoodsService service;
     @Resource
     private SocketService socketService;
+
     private Socket socket = null;
     private float endPrace = 0;
+    private String out_trade_no;
     public  void start() throws IOException {
         ServerSocket serverSocket = new ServerSocket(8888);
         System.out.println("========socket start==========");
@@ -45,11 +48,20 @@ public class GetPrace {
                 int size = inputStream.read(bs);
                 for(int i = 0;i < size;i ++)
                     content += (char)bs[i];
-                switch (content){
-                    case "ok":setTlement();break;//返回二维码信息
-                    case "clear":clearPrace();break;//重置价格
-                    case "pay_type" :waitPay();break;//返回支付状态
-                    default:statisticalPrace(content);break;//返回目前价格总和
+                if(content.matches("ok_[\\d]{1,2}")){
+                    sendQr_codeOrder(Integer.valueOf(content.replaceAll("ok_","")));
+                }else {
+                    switch (content) {
+                        case "clear":
+                            clearPrace();
+                            break;//重置价格
+                        case "pay_type":
+                            waitPay();
+                            break;//返回支付状态
+                        default:
+                            statisticalPrace(content);
+                            break;//返回目前价格总和
+                    }
                 }
                 inputStream.close();
                 socket.close();
@@ -59,21 +71,9 @@ public class GetPrace {
             }
         }
     }
-//    	if(OR_NOT_RECEIVE == 1)
-//    {
-//        if(strlen(RECEIVE_STRING) != 0)
-//            RECEIVE_STRING[strlen(RECEIVE_STRING)] = RECEIVE_CHAR;
-//        if(RECEIVE_CHAR == 0x23)
-//            RECEIVE_STRING[strlen(RECEIVE_STRING)] = RECEIVE_CHAR;
-//        if(RECEIVE_CHAR == 0x40)
-//        {
-//            RECEIVE_STRING[strlen(RECEIVE_STRING)] = 0x00;
-//            OR_NOT_RECEIVE = 0;
-//        }
-//    }
     private void waitPay(){
         while (true){
-            if (socketService.getMsg()){
+            if (socketService.getMsg(out_trade_no)){
                 sendData("ok");
                 return;
             }
@@ -85,26 +85,19 @@ public class GetPrace {
         }
     }
     private void setTlement(){
-        sendQrCodeString();
-//        CustomerData.clearOneCustomer();
-//        clearPrace();
+        sendZFBPay();
+        CustomerData.clearOneCustomer();
+        clearPrace();
     }
-    private void sendQrCodeString(){
+    private void sendZFBPay(){
         System.out.println("开始发送支付宝支付请求···");
-        String qr_code_string = socketService.invoicing();
+        out_trade_no = socketService.invoicing();
         System.out.println("获取二维码数据成功。开始解析二维码数据");
         try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
+            Qr_codeUtil.qr_code(out_trade_no);
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("解析成功");
-        try {
-            System.out.println(Qr_codeUtil.qr_code());
-        } catch (IOException e) {
-//            e.printStackTrace();
-        }
-//        sendData("#" + qr_code_string + "@");
     }
     private void clearPrace(){
         CustomerData.clearOneCustomer();
@@ -116,12 +109,18 @@ public class GetPrace {
         GoodsModel model = service.selectByGoodsId(id);
         endPrace += model.getGoodsPrace();
         CustomerData.insertGoods(model);
-        System.out.println("商品id==" + id);
-        System.out.println("商品名：" + model.getGoodsDescribe());
-        System.out.println("商品价格：" + model.getGoodsPrace());
         sendData("#" + endPrace + "@");
-        setTlement();
     }
+
+
+    private void sendQr_codeOrder(int order){
+        if (order == 0){
+            setTlement();
+        }
+        sendData(Qr_codeUtil.getIndex(order));
+    }
+
+
 
     private void sendData(String content) {
         try {

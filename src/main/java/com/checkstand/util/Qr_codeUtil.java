@@ -9,8 +9,10 @@ import java.io.IOException;
  * Created by 11723 on 2017/5/9.
  */
 public class Qr_codeUtil {
-    public static String qr_code() throws IOException {
+    private static char[][] chars = new char[33][33];
+    public static String qr_code(String qr_path) throws IOException {
         File file=new File("E:\\_kiss2017031803090238_z.png");//图片路径
+//        File file=new File("E:\\" + qr_path);//图片路径
         BufferedImage bufIma= ImageIO.read(file);//
         int width=bufIma.getWidth();
         int height=bufIma.getHeight();
@@ -19,55 +21,13 @@ public class Qr_codeUtil {
         for(int i=0;i<width;i++)
             for(int j=0;j<height;j++)
                 imaRGB[i][j]=bufIma.getRGB(i,j)&0xffffff;
-        char chars[][] = new char[33][33];
-        char _chars[][] = new char[33][33];
         for(int i=0;i<width-8;i++)  {
             for(int j=0;j<height-8;j++) {
                 if (imaRGB[i+4][j+4] == 0) {//0黑色
-//		    		System.out.print("1");
                     chars[i][j/8] = name(chars[i][j/8], j);
-                    _chars[i][j] = '1';
-                }else {
-//					System.out.print("0");
-                    _chars[i][j] = '0';
                 }
             }
-//		    System.out.println();
         }
-//		String content = "";
-//		int c = 0,count = 0;
-//		char[] data = {0xff,0xff,0xff};
-//		String space = String.valueOf(data);
-//		for(int i = 0;i < 33;i ++){
-//			int[] k = {0,0};
-//			for(int j = 0;j < 33; j ++){
-//				if (_chars[i][j] == '1') {
-//					if (k[0]+1 == j || k[0] == 0) {
-//						k[0] = j;
-//						k[1]++;
-//					}
-//					c = 0;
-//					if (j == 32) {
-//						content +="fill " +(50+(k[0]-k[1]+1)*5) + "," + (50+i*5) + "," + k[1]*5 + ",5,BLACK" + space;
-//						System.out.println("fill " +(50+(k[0]-k[1]+1)*5) + "," + (50+i*5) + "," + k[1]*5 + ",5,BLACK" + space);
-//						k[0] = 0;
-//						k[1] = 0;
-//						c = 1;
-//						count ++;
-//					}
-//				}else {
-//					if (c == 0) {
-//						content +="fill " +(50+(k[0]-k[1]+1)*5) + "," + (50+i*5) + "," + k[1]*5 + ",5,BLACK" + space;
-//						System.out.println("fill " +(50+(k[0]-k[1]+1)*5) + "," + (50+i*5) + "," + k[1]*5 + ",5,BLACK" + space);
-//						k[0] = 0;
-//						k[1] = 0;
-//						c = 1;
-//						count ++;
-//					}
-//				}
-//			}
-//		}
-//		System.out.println(count);
         for(int i = 0;i < 33;i ++){
 //            System.out.print("{");
             for(int j = 0;j < 5;j ++){
@@ -83,7 +43,10 @@ public class Qr_codeUtil {
         }
         return String.valueOf(chars);
     }
-    public static char name(char _char,int j) {
+    public static String getIndex(int index){
+        return String.valueOf(chars).substring(index*33,(index+1)*33);
+    }
+    private static char name(char _char,int j) {
         switch(j%8){
             case 0:_char|=0x80;break;
             case 1:_char|=0x40;break;
@@ -95,5 +58,9 @@ public class Qr_codeUtil {
             case 7:_char|=0x01;break;
         }
         return  _char;
+    }
+
+    public static void main(String[] args) throws IOException {
+        qr_code(null);
     }
 }

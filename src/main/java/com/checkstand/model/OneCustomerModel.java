@@ -34,11 +34,8 @@ public class OneCustomerModel implements Serializable {
         this.customer_id = customer_id;
     }
 
-    @OneToMany(fetch = FetchType.EAGER,targetEntity = GoodsModel.class,cascade =      //单项一对多配置
-            {
-                    CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE,
-            })
-    @JoinColumns(value={@JoinColumn(name="pid",referencedColumnName="goodId")})
+    @OneToMany(cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
+    @JoinColumn(name = "goodsId")
     public List<GoodsModel> getGoodsModels() {
         return goodsModels;
     }

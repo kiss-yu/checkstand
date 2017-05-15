@@ -17,20 +17,16 @@ public class SocketService {
 
     public static boolean type = false;
     public String invoicing(){
-//        customerService.insert(CustomerData.one_customer);
-        return zfbService.getQrCodeFilePath(zfbService.createQrCodePy());
+        customerService.insert(CustomerData.one_customer);
+        return zfbService.createQrCodePy();
     }
 
     public static void main(String[] args) {
         ZFBService zfbService = new ZFBService();
-        zfbService.getQrCodeFilePath(zfbService.createQrCodePy());
+        zfbService.createQrCodePy();
     }
 
-    public boolean getMsg(){
-        if (type){
-            type = false;
-            return true;
-        }
-        return false;
+    public boolean getMsg(String out_trade_no){
+       return zfbService.isOk(out_trade_no);
     }
 }

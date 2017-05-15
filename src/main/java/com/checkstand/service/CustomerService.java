@@ -1,6 +1,7 @@
 package com.checkstand.service;
 
 import com.checkstand.dao.CustomerDao;
+import com.checkstand.model.GoodsModel;
 import com.checkstand.model.OneCustomerModel;
 import com.checkstand.web.util.SQLUtil;
 import org.springframework.stereotype.Service;
@@ -19,11 +20,11 @@ public class CustomerService {
     private CustomerDao customerDao;
     public void insert(OneCustomerModel model){
         model.setBuyMessage();
+        model.setBuy_time(new Date());
+        model.setBuy_number(model.getGoodsModels().size());
+        for(GoodsModel good:model.getGoodsModels())
+            model.setAccount(model.getAccount() + good.getGoodsPrace());
         customerDao.insert(model);
-    }
-
-    public void deleteByCustomerId(String customer_id){
-        customerDao.delete(customerDao.selectByCustomerId(customer_id));
     }
 
     public OneCustomerModel find(String customer_id){

@@ -1,6 +1,7 @@
 package com.checkstand.service;
 
 import com.alipay.api.AlipayApiException;
+import com.alipay.api.response.AlipayTradeQueryResponse;
 import com.checkstand.Data.CustomerData;
 import com.checkstand.ZFBUtil.config.Configs;
 import com.checkstand.ZFBUtil.model.AlipayParameterModel;
@@ -42,8 +43,14 @@ public class ZFBService {
         }
         return out_trade_no;
     }
-    public String getQrCodeFilePath(String out_trade_no){
-        return Configs.getQr_code_filepath() + out_trade_no;
+    public boolean isOk(String out_trade_no){
+        try {
+            AlipayTradeQueryResponse response = ZFBclient.alipayQuery(out_trade_no);
+            if (response.getTradeStatus().equals("TRADE_SUCCESS"))
+                return true;
+        } catch (Exception e) {
+        }
+        return false;
     }
 
 }
