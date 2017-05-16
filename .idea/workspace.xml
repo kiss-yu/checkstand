@@ -3,17 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="3f828834-35c1-42d0-a400-4d439504b387" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/checkstand/Data/CustomerData.java" afterPath="$PROJECT_DIR$/src/main/java/com/checkstand/Data/CustomerData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/checkstand/ZFBUtil/service/impl/ZFBAlipayTradeServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/checkstand/ZFBUtil/service/impl/ZFBAlipayTradeServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/checkstand/model/OneCustomerModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/checkstand/model/OneCustomerModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/checkstand/service/CustomerService.java" afterPath="$PROJECT_DIR$/src/main/java/com/checkstand/service/CustomerService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/checkstand/service/SocketService.java" afterPath="$PROJECT_DIR$/src/main/java/com/checkstand/service/SocketService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/checkstand/service/ZFBService.java" afterPath="$PROJECT_DIR$/src/main/java/com/checkstand/service/ZFBService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/checkstand/util/GetPrace.java" afterPath="$PROJECT_DIR$/src/main/java/com/checkstand/util/GetPrace.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/checkstand/util/Qr_codeUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/checkstand/util/Qr_codeUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/checkstand/service/MessageWebSocket.java" afterPath="$PROJECT_DIR$/src/main/java/com/checkstand/service/MessageWebSocket.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring-hibernate.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring-hibernate.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/checkstand-1.0-SNAPSHOT/index.html" afterPath="$PROJECT_DIR$/target/checkstand-1.0-SNAPSHOT/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/checkstand-1.0-SNAPSHOT/index.js" afterPath="$PROJECT_DIR$/target/checkstand-1.0-SNAPSHOT/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/checkstand-1.0-SNAPSHOT/WEB-INF/classes/spring-hibernate.xml" afterPath="$PROJECT_DIR$/target/checkstand-1.0-SNAPSHOT/WEB-INF/classes/spring-hibernate.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/spring-hibernate.xml" afterPath="$PROJECT_DIR$/target/classes/spring-hibernate.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="G:/opencv/target/" />
@@ -41,8 +35,8 @@
       <file leaf-file-name="GetPrace.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/util/GetPrace.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="972">
-              <caret line="129" column="28" lean-forward="true" selection-start-line="129" selection-start-column="28" selection-end-line="129" selection-end-column="28" />
+            <state relative-caret-position="2220">
+              <caret line="129" column="28" lean-forward="false" selection-start-line="129" selection-start-column="28" selection-end-line="129" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -51,8 +45,34 @@
       <file leaf-file-name="MessageWebSocket.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/service/MessageWebSocket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="23" column="1" lean-forward="false" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+            <state relative-caret-position="240">
+              <caret line="17" column="36" lean-forward="false" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#393#394#0" expanded="true" />
+                <element signature="e#436#437#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WebSocketService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/Data/WebSocketService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="637">
+              <caret line="42" column="12" lean-forward="false" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="7280">
+              <caret line="364" column="48" lean-forward="false" selection-start-line="364" selection-start-column="48" selection-end-line="364" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -61,7 +81,7 @@
       <file leaf-file-name="GoodsService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/service/GoodsService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
+            <state relative-caret-position="720">
               <caret line="45" column="22" lean-forward="false" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="22" />
               <folding>
                 <element signature="e#1194#1195#0" expanded="true" />
@@ -76,19 +96,12 @@
       <file leaf-file-name="OneCustomerModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/model/OneCustomerModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="38" column="21" lean-forward="true" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GoodsDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/dao/GoodsDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="40">
+              <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+              <folding>
+                <element signature="e#1079#1080#0" expanded="true" />
+                <element signature="e#1113#1114#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -103,20 +116,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SystemController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/controller/SystemController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-311">
-              <caret line="36" column="44" lean-forward="false" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CustomerService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/service/CustomerService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
+            <state relative-caret-position="300">
               <caret line="23" column="20" lean-forward="false" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
               <folding>
                 <element signature="e#858#859#0" expanded="true" />
@@ -128,10 +131,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="spring-hibernate.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="spring-hibernate.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/spring-hibernate.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="1020">
               <caret line="51" column="57" lean-forward="false" selection-start-line="51" selection-start-column="57" selection-end-line="51" selection-end-column="57" />
               <folding />
             </state>
@@ -156,9 +159,9 @@
         <option value="HTML File" />
         <option value="CSS File" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JavaScript File" />
         <option value="SCSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -185,8 +188,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/checkstand/ZFBUtil/model/BillInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/checkstand/ZFBUtil/service/impl/OrderProcessing/AlipayQueue.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/checkstand/ZFBUtil/service/impl/OrderProcessing/WaitePayQueue.java" />
         <option value="$PROJECT_DIR$/src/main/resources/order-parameter.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/checkstand/ZFBUtil/service/ZFBService.java" />
@@ -218,7 +219,6 @@
         <option value="G:/opencv/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/checkstand/model/DataSource.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/checkstand/service/GoodsService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/checkstand/service/MessageWebSocket.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/checkstand/model/AlipayModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/checkstand/model/GoodsModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/checkstand/model/OrderModel.java" />
@@ -233,9 +233,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/checkstand/ZFBUtil/service/impl/ZFBAlipayTradeServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/checkstand/service/ZFBService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/checkstand/service/SocketService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/checkstand/model/OneCustomerModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/checkstand/service/CustomerService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/spring-hibernate.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/checkstand/model/OneCustomerModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/checkstand/service/WebSocketService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/checkstand/service/MessageWebSocket.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/checkstand/Data/WebSocketService.java" />
       </list>
     </option>
   </component>
@@ -344,9 +347,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -775,7 +778,7 @@
     <configuration default="false" name="SocketService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="com.checkstand.service.*" />
+          <option name="PATTERN" value="com.checkstand.Data.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -1421,12 +1424,17 @@
       <workItem from="1494600295393" duration="24000" />
       <workItem from="1494852426152" duration="2302000" />
       <workItem from="1494854784695" duration="77000" />
-      <workItem from="1494854876890" duration="2709000" />
+      <workItem from="1494854876890" duration="2895000" />
+      <workItem from="1494908556972" duration="512000" />
+      <workItem from="1494909092563" duration="218000" />
+      <workItem from="1494909328367" duration="157000" />
+      <workItem from="1494909505841" duration="1175000" />
+      <workItem from="1494915365721" duration="571000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="190567000" />
+    <option name="totallyTimeSpent" value="193386000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1457,16 +1465,15 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4495708" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32939914" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32725322" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27896994" sideWeight="0.49573562" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25429183" sideWeight="0.49573562" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22761194" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24093817" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1475,6 +1482,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32725322" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32939914" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1534,7 +1542,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/alipayQRCodePayment/util/CallbackExecution.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/alipayQRCodePayment/util/ModelToParameters.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/alipayQRCodePayment/service/ZFBclient.java" />
     <entry file="file://$PROJECT_DIR$/checkstand.iml">
@@ -1725,18 +1732,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1580">
-          <caret line="79" column="21" lean-forward="false" selection-start-line="79" selection-start-column="21" selection-end-line="79" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/util/Qr_codeUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1744,7 +1743,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="8" column="41" lean-forward="false" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1752,7 +1750,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1040">
           <caret line="65" column="42" lean-forward="false" selection-start-line="65" selection-start-column="18" selection-end-line="65" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1760,7 +1757,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="617">
           <caret line="48" column="66" lean-forward="true" selection-start-line="48" selection-start-column="66" selection-end-line="48" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1768,10 +1764,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
           <caret line="29" column="44" lean-forward="false" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
-          <folding>
-            <element signature="e#712#713#0" expanded="true" />
-            <element signature="e#763#764#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1779,7 +1771,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="19" column="49" lean-forward="true" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1787,23 +1778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="47" lean-forward="false" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/model/GoodsModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="16" column="26" lean-forward="false" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/model/OneCustomerModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="38" column="21" lean-forward="true" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1817,9 +1791,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/controller/SystemController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-311">
+        <state relative-caret-position="380">
           <caret line="36" column="44" lean-forward="false" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1833,23 +1806,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/util/GetPrace.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="129" column="28" lean-forward="true" selection-start-line="129" selection-start-column="28" selection-end-line="129" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/service/MessageWebSocket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="23" column="1" lean-forward="false" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+        <state relative-caret-position="2220">
+          <caret line="129" column="28" lean-forward="false" selection-start-line="129" selection-start-column="28" selection-end-line="129" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/service/GoodsService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
+        <state relative-caret-position="720">
           <caret line="45" column="22" lean-forward="false" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="22" />
           <folding>
             <element signature="e#1194#1195#0" expanded="true" />
@@ -1862,7 +1827,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/service/CustomerService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
+        <state relative-caret-position="300">
           <caret line="23" column="20" lean-forward="false" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
           <folding>
             <element signature="e#858#859#0" expanded="true" />
@@ -1873,11 +1838,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/model/GoodsModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="16" column="26" lean-forward="false" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/spring-hibernate.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
+        <state relative-caret-position="1020">
           <caret line="51" column="57" lean-forward="false" selection-start-line="51" selection-start-column="57" selection-end-line="51" selection-end-column="57" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/model/OneCustomerModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="e#1079#1080#0" expanded="true" />
+            <element signature="e#1113#1114#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/service/MessageWebSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="17" column="36" lean-forward="false" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#393#394#0" expanded="true" />
+            <element signature="e#436#437#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7280">
+          <caret line="364" column="48" lean-forward="false" selection-start-line="364" selection-start-column="48" selection-end-line="364" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/checkstand/Data/WebSocketService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="42" column="12" lean-forward="false" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

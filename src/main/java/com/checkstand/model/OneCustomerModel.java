@@ -1,9 +1,6 @@
 package com.checkstand.model;
 
-import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -34,8 +31,9 @@ public class OneCustomerModel implements Serializable {
         this.customer_id = customer_id;
     }
 
-    @OneToMany(cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
-    @JoinColumn(name = "goodsId")
+    @ManyToMany
+    @JoinTable(name = "customer_goods",joinColumns = {@JoinColumn(name = "customer_id")},
+            inverseJoinColumns = {@JoinColumn(name = "goodsId")})
     public List<GoodsModel> getGoodsModels() {
         return goodsModels;
     }
