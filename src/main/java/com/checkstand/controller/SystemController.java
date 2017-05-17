@@ -7,6 +7,7 @@ import com.checkstand.ZFBUtil.service.impl.ZFBAlipayTradeServiceImpl;
 import com.checkstand.model.GoodsModel;
 import com.checkstand.service.GoodsService;
 import com.checkstand.service.SocketService;
+import com.checkstand.service.WebSocketService;
 import org.apache.commons.collections.map.DefaultedMap;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,9 @@ import java.util.Map;
 public class SystemController {
     @Resource
     private GoodsService service;
+
+
+
     @ResponseBody
     @RequestMapping(value = "/add",method = RequestMethod.GET)
     public void save(

@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -57,6 +58,7 @@ public class CustomerDao extends SessionDao{
         return null;
     }
 
+
     public List<OneCustomerModel> select(
             @Param("customer_id") String customer_id,
             @Param("query_start_day") Date query_start_day,
@@ -64,24 +66,23 @@ public class CustomerDao extends SessionDao{
             @Param("offset") int offset,
             @Param("limit") int limit,
             @Param("sort") String sort,
-            @Param("order") String order,
-            @Param("keyword") String keyword){
+            @Param("order") String order){
         customerSession = customerSession == null ? getSession() : customerSession;
-        String hql = "select customer_model  from OneCustomerModel customer_model where 1 = 1 ";
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String start = formatter.format(query_start_day);
+        String end = formatter.format(quert_end_day);
+        String hql = "from OneCustomerModel customer_model where 1 = 1 ";
         if (customer_id != null)
-            hql += "and customer_model.customer_id = ‘" + customer_id + "’ ";
+            hql += "and customer_model.customer_id = '" + customer_id + "’ ";
         if (quert_end_day != null)
-            hql += "and customer_model.pay_time between " + query_start_day +" and " + quert_end_day + " ";
-        if (keyword != null)
-            hql += "and customer_model.customer_id like '" + keyword + "' ";
-        if (offset != 0)
-            hql += "limit " + offset + "," + limit + " ";
+            hql += "and customer_model.buy_time  between " + start +" and " + end + " ";
         if (sort != null)
-            hql += "order by " + order + " " + sort + " ";
+            hql += "order by customer_model." + order + " " + sort + " ";
         try {
-            List lists = customerSession.createQuery(hql).list();
-            HibernateUtil.commitTranstion(customerSession);
-            return (List<OneCustomerModel>) lists;
+            final Query query = customerSession.createQuery(hql);
+            if (offset != 0)
+                query.setFirstResult(offset).setMaxResults(limit);
+            return (List<OneCustomerModel>) query.list();
         } catch (Exception e) {
             e.printStackTrace();
         }

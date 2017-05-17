@@ -7,6 +7,10 @@
           <element id="module-output" name="checkstand" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.glassfish.web:javax.servlet.jsp.jstl:1.2.2" />
+          <element id="library" level="project" name="Maven: javax.servlet.jsp.jstl:jstl-api:1.2" />
+          <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
+          <element id="library" level="project" name="Maven: javax.servlet.jsp:jsp-api:2.1" />
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:4.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-validator:5.2.4.Final" />
           <element id="library" level="project" name="Maven: javax.validation:validation-api:1.1.0.Final" />
@@ -20,16 +24,13 @@
           <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
           <element id="library" level="project" name="Maven: xml-apis:xml-apis:1.0.b2" />
           <element id="library" level="project" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" />
-          <element id="library" level="project" name="Maven: org.glassfish.web:javax.servlet.jsp.jstl:1.2.2" />
-          <element id="library" level="project" name="Maven: javax.servlet.jsp.jstl:jstl-api:1.2" />
-          <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
-          <element id="library" level="project" name="Maven: javax.servlet.jsp:jsp-api:2.1" />
           <element id="library" level="project" name="Maven: org.springframework:spring-core:4.2.6.RELEASE" />
           <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.2" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.2.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:4.2.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-oxm:4.2.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.2.6.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-websocket:4.3.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.2.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.2.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.2.6.RELEASE" />

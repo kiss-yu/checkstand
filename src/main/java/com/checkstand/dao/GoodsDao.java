@@ -1,12 +1,16 @@
 package com.checkstand.dao;
 
 import com.checkstand.model.GoodsModel;
+import com.checkstand.model.OneCustomerModel;
 import com.checkstand.util.HibernateUtil;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 
 /**
@@ -42,6 +46,38 @@ public class GoodsDao extends SessionDao{
         goodsSession.delete(selectByGoodsId(id));
         commitAndExceptionHandling();
     }
+
+    public List<GoodsModel> select(String title,String order,String sort,int limit,int offset){
+        goodsSession = goodsSession == null ? getSession():goodsSession;
+        String hql = "from GoodsModel goods_model where 1 = 1 ";
+        if (title != null)
+            hql += "and goods_model.title = ‘" + title + "’ ";
+        if (sort != null)
+            hql += "order by goods_model." + order + " " + sort + " ";
+        try {
+            final Query query = goodsSession.createQuery(hql);
+            if (offset != 0)
+                query.setFirstResult(offset).setMaxResults(limit);
+            return (List<GoodsModel>) query.list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    public long selectSoldSum(){
+        goodsSession = goodsSession == null ? getSession():goodsSession;
+        String hql = "select sum(goods.soldNumber) from GoodsModel as goods where 1 = 1";
+        long sum = (long) goodsSession.createQuery(hql) .iterate().next();
+        try {
+            HibernateUtil.commitTranstion(goodsSession);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return sum;
+    }
+
     private void commitAndExceptionHandling(){
         try {
             HibernateUtil.commitTranstion(goodsSession);

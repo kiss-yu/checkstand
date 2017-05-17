@@ -223,41 +223,6 @@ public class AlipayParameterModel implements Order{
     }
     @Override
     public String toJson(){
-//        String json = "{";
-//        json += getOut_trade_no() != null ? "out_trade_no:\"" + getOut_trade_no() +"\"," :"";
-//        json += getSeller_id() != null ? "seller_id:\"" + getSeller_id() + "\"," : "";
-//        json += getTotal_amount() != null ? "total_amount:\"" + getTotal_amount() + "\"," : "";
-//        json += getDiscountable_amount() != null ? "discountable_amount:\"" + getDiscountable_amount() + "\"," : "";
-//        json += getUndiscountable_amount() != null ? "undiscountable_amou:\"" + getUndiscountable_amount() + "\"," : "";
-//        json += getBuyer_logon_id() != null ? "buyer_logon_id:\"" + getBuyer_logon_id() + "\"," : "";
-//        json += getSubject() != null ? "body:\"" + getBody() + "\"," : "";
-//        json += goodsToJson(getGoods_detail());
-//
-//        json +="}";
-//        return json.replaceFirst(",[\\s]*}","}");
-//        String json = "";
-//        String[] jsons = JSONObject.fromObject(this).toString().split(",");
-//        for (String str:jsons){
-//            str = str.replaceFirst("[}|{]","");
-//            if (str.split(":")[1].equals("\"\"") || str.split(":")[1].equals("null") || str.split(":")[1].equals("[]"))
-//                continue;
-//            json += str + ",";
-//        }
         return JSONObject.fromObject(this).toString();
     }
-//    private String goodsToJson(List<GoodsDetail> list){
-//        if (list == null)
-//            return "";
-//        String json = "[";
-//        for (GoodsDetail goods:list){
-//            json += "{";
-//            json += "goods_id:\"" + goods.getGoodsId() + "\",";
-//            json += goods.getAlipayGoodsId() != null ? "alipay_goods_id:\"" + goods.getAlipayGoodsId() + "\"," : "";
-//            json += goods.getGoodsName();
-//            json += goods.getQuantity().toString();
-//            json += goods.getPrice();
-//            json += json.replaceFirst(",[\\s]*}","}");
-//        }
-//        return json;
-//    }
 }

@@ -4,6 +4,7 @@ import com.checkstand.dao.CustomerDao;
 import com.checkstand.model.GoodsModel;
 import com.checkstand.model.OneCustomerModel;
 import com.checkstand.web.util.SQLUtil;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -35,9 +36,12 @@ public class CustomerService {
         customerDao.updata(model);
     }
 
+    public List<OneCustomerModel> selectOneDay(Date start,Date end){
+        return select(null,start,end,0,0,null,null);
+    }
 
-    public List<OneCustomerModel> select(String customer_id,Date query_start_time,Date query_end_time,int page,int limit,String sort,String order,String keyword){
-        return customerDao.select(customer_id,query_start_time,query_end_time, SQLUtil.getOffset(page,limit),limit,sort,order,SQLUtil.stringToStringgroup(keyword));
+    public List<OneCustomerModel> select(String customer_id,Date query_start_time,Date query_end_time,int page,int limit,String sort,String order){
+        return customerDao.select(customer_id,query_start_time,query_end_time, SQLUtil.getOffset(page,limit),limit,sort,order);
     }
 
 }

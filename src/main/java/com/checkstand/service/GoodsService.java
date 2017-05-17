@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.annotation.Resource;
 import javax.print.MultiDoc;
+import java.util.List;
 
 /**
  * Created by 11723 on 2017/3/14.
@@ -64,8 +65,17 @@ public class GoodsService {
         updata(model);
     }
 
+    public List<GoodsModel> select(String title,String order,String sort,int limit,int offset){
+        return dao.select(title,order,sort,limit,offset);
+    }
+
+
     public GoodsModel selectByGoodsId(String goodsId){
         return dao.selectByGoodsId(goodsId);
+    }
+
+    public long getSoldSum(){
+        return dao.selectSoldSum();
     }
 
 }
