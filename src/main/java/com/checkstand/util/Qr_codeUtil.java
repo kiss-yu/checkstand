@@ -10,9 +10,10 @@ import java.io.IOException;
  */
 public class Qr_codeUtil {
     private static char[][] chars = new char[33][33];
+    private static char[] _chars = new char[165];
     public static String qr_code(String qr_path) throws IOException {
-        File file=new File("E:\\_kiss2017031803090238_z.png");//图片路径
-//        File file=new File("E:\\" + qr_path);//图片路径
+//        File file=new File("E:\\_kiss2017031803090238_z.png");//图片路径
+        File file=new File("E:\\" + qr_path + ".png");//图片路径
         BufferedImage bufIma= ImageIO.read(file);//
         int width=bufIma.getWidth();
         int height=bufIma.getHeight();
@@ -28,23 +29,25 @@ public class Qr_codeUtil {
                 }
             }
         }
+        int k = 0;
         for(int i = 0;i < 33;i ++){
 //            System.out.print("{");
             for(int j = 0;j < 5;j ++){
+                _chars[k++] = chars[i][j];
                 if (j == 4) {
-					System.out.print("0x"+Integer.toHexString(chars[i][j]) + " ");
-//                    System.out.print("0x"+Integer.toHexString(chars[i][j]));
+//					System.out.print(chars[i][j] + " ");
+                    System.out.print("0x"+Integer.toHexString(chars[i][j]));
                 }else
-					System.out.print("0x"+Integer.toHexString(chars[i][j]) + " ");
-//                    System.out.print("0x"+Integer.toHexString(chars[i][j])+",");
+//					System.out.print(chars[i][j] + " ");
+                    System.out.print("0x"+Integer.toHexString(chars[i][j])+",");
             }
             System.out.println();
 //            System.out.println("},");
         }
-        return String.valueOf(chars);
+        return String.valueOf(_chars);
     }
     public static String getIndex(int index){
-        return String.valueOf(chars).substring(index*33,(index+1)*33);
+        return String.valueOf(_chars).substring(index*15,(index+1)*15);
     }
     private static char name(char _char,int j) {
         switch(j%8){

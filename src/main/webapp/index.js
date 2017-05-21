@@ -8,7 +8,10 @@ if ("WebSocket" in window) {
     webSocket.onerror = function(event) {
     };
     webSocket.onopen = function(event) {
-
+        sendSales_statistics();
+        sendGoods_percentage();
+        sendGoods_sort();
+        sendInventory_warring();
     };
     webSocket.onmessage = function(event) {
         var data = eval('(' + event.data + ')');

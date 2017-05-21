@@ -48,6 +48,7 @@ public class GetPrace {
                 int size = inputStream.read(bs);
                 for(int i = 0;i < size;i ++)
                     content += (char)bs[i];
+                System.out.println(content);
                 if(content.matches("ok_[\\d]{1,2}")){
                     sendQr_codeOrder(Integer.valueOf(content.replaceAll("ok_","")));
                 }else {
@@ -102,7 +103,7 @@ public class GetPrace {
     private void clearPrace(){
         CustomerData.clearOneCustomer();
         endPrace = 0;
-        sendData("#" + endPrace + "@");
+//        sendData("#" + endPrace + "@");
     }
 
     private void statisticalPrace(String id) {
@@ -117,12 +118,17 @@ public class GetPrace {
         if (order == 0){
             setTlement();
         }
-        sendData(Qr_codeUtil.getIndex(order));
+        char ff = 0xff;
+        char[] chars = (ff + Qr_codeUtil.getIndex(order) + ff).toCharArray();
+        for (char _char:chars)
+            System.out.print("0x"+Integer.toHexString(_char) + ", ");
+        sendData(ff + Qr_codeUtil.getIndex(order) + ff);
     }
 
 
 
     private void sendData(String content) {
+        System.out.println("send=" + content);
         try {
             PrintWriter pWriter = new PrintWriter(socket.getOutputStream());
             pWriter.write(content);

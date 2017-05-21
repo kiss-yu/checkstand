@@ -19,7 +19,6 @@ public class ZFBAlipayTradeServiceImpl{
     static  AlipayClient alipayClient;
     private static Log log = LogFactory.getLog(ZFBAlipayTradeServiceImpl.class);
     static{
-//        Configs.init("zfbinfo.properties");//讀取配置文件
         CreateZFBServiceimpl.createClient();
     }
 
@@ -29,13 +28,13 @@ public class ZFBAlipayTradeServiceImpl{
     public static AlipayTradePrecreateResponse createQrCodeAlipay(Order parameterModel, String QrCodeFilePath) throws AlipayApiException {
         AlipayTradePrecreateRequest request = new AlipayTradePrecreateRequest();
         request.setBizContent(parameterModel.toJson());
-//        request.setNotifyUrl(Configs.getNotify_url());
+        request.setNotifyUrl(Configs.getNotify_url());
         log.info("json = " + request.getBizContent());
         AlipayTradePrecreateResponse response = alipayClient.execute(request);
         if(response.isSuccess()){
             // 需要修改为运行机器上的路径
             String filePath = String.format(QrCodeFilePath + "\\%s.png", response.getOutTradeNo());
-            ZxingUtil.getQRCodeImge(response.getQrCode(), 200, filePath);
+            ZxingUtil.getQRCodeImge(response.getQrCode(), 33, filePath);
             log.info("create Qr-Code succeed \n filepath:" + filePath);
             log.info(response.getBody());
             return response;

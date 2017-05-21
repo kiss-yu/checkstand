@@ -35,12 +35,12 @@ public class Configs {
     private static long heartbeatDuration ; // 交易保障线程调度间隔（秒）
     private static int alipay_out_time;//交易超时最大时长
     private static String qr_code_filepath;
+    private static String notify_url;
 
     public static String getNotify_url() {
         return notify_url;
     }
 
-    private static String notify_url;
     private Configs() {
         // No Constructor
     }
